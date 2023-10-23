@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Button Creator</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.8.0/styles/default.min.css">
+</head>
+
+<body>
+  <div id="app">
+    <section class="button-creator">
+      <form id="controles">
+        <label for="text">Texto</label>
+        <input type="text" name="text" id="text" v-model="styles.text">
+        <label for="color">Color</label>
+        <input type="color" name="color" id="color" v-model="styles.color" @input="updateStyles">
+        <label for="backgroundColor">Background Color</label>
+        <input type="color" name="backgroundColor" id="backgroundColor" v-model="styles.backgroundColor"
+          @input="updateStyles">
+        <label for="height">Height</label>
+        <input type="range" name="height" id="height" min="0" max="200" v-model="styles.height" @input="updateStyles">
+        <label for="width">Width</label>
+        <input type="range" name="width" id="width" min="0" max="600" v-model="styles.width" @input="updateStyles">
+        <label for="border">Border</label>
+        <input type="text" name="border" id="border" v-model="styles.border" @input="updateStyles">
+        <label for="borderRadius">Border Radius</label>
+        <input type="range" name="borderRadius" id="borderRadius" min="0" max="50" v-model="styles.borderRadius"
+          @input="updateStyles">
+        <label for="fontFamily">Font Family</label>
+        <select name="fontFamily" id="fontFamily" v-model="styles.fontFamily" @change="updateStyles">
+          <option value="Arial">Arial</option>
+          <option value="Georgia">Georgia</option>
+          <option value="monospace">Monospace</option>
+          <option value="Raleway">Raleway</option>
+        </select>
+        <label for="fontSize">Font Size</label>
+        <input type="number" name="fontSize" id="fontSize" v-model="styles.fontSize" @input="updateStyles">
+      </form>
+      <section class="resultado">
+        <h1 class="preview-title">Preview</h1>
+        <div class="button-preview">
+          <button @click="" class="btn" :style="btnStyle">{{ styles.text }}</button>
+        </div>
+        <pre>
+          <code class="css" id="cssCode">{{ cssText }}</code>
+          <button @click="copyCode" class="copy-button">Copy Code</button>
+        </pre>
+      </section>
+    </section>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.8.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+</body>
+
+</html>
